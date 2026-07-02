@@ -1,0 +1,55 @@
+{
+  "name": "agent-os-toolkit",
+  "version": "0.1.0",
+  "description": "Agent OS MCP-style tools for orchestration, animation evidence, protocol linting, self-tests, and scorecards.",
+  "tools": [
+    {
+      "name": "agent_os.orchestrate",
+      "description": "Run the base meta-orchestrator and generate orchestration reports.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "agent_os.orchestrate_super",
+      "description": "Run the supercharged meta-orchestrator with risk scoring and claim extraction.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "agent_os.lint_protocols",
+      "description": "Run protocol linter over Agent OS markdown files.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "agent_os.self_test",
+      "description": "Run seeded self-test harness.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "agent_os.score",
+      "description": "Generate Agent OS scorecard from reports.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "agent_os.validate_reports",
+      "description": "Validate required report artifacts and score thresholds.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    }
+  ]
+}

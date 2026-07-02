@@ -10,7 +10,10 @@
     "orchestrate:super": "node agent-os/40_meta_orchestrator/supercharged-meta-orchestrator.mjs",
     "lint:protocols": "node agent-os/42_protocol_linter/protocol-linter.mjs",
     "self-test": "node agent-os/41_self_test_harness/SELF_TEST_RUNNER.mjs",
-    "score": "node agent-os/48_agent_os_scorecard/score-agent-run.mjs"
+    "score": "node agent-os/48_agent_os_scorecard/score-agent-run.mjs",
+    "validate:reports": "node agent-os/51_trust_pack/validate-agent-os-reports.mjs",
+    "mcp:stdio": "node agent-os/52_mcp_transport/mcp-stdio-server.mjs",
+    "benchmark:arena": "node agent-os/53_benchmark_arena/run-benchmark-arena.mjs"
   },
   "devDependencies": {
     "typescript": "^5.4.5"

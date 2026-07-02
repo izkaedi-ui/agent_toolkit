@@ -1,0 +1,32 @@
+{
+  "cases": [
+    {
+      "id": "fake-progress",
+      "path": "agent-os/53_benchmark_arena/cases/fake-progress",
+      "expectedDomains": ["animation"],
+      "expectedFindings": ["fake-progress-risk"],
+      "description": "Timer-driven progress without real work units."
+    },
+    {
+      "id": "inaccessible-svg",
+      "path": "agent-os/53_benchmark_arena/cases/inaccessible-svg",
+      "expectedDomains": ["svg"],
+      "expectedFindings": ["svg-accessibility-unclassified"],
+      "description": "Meaningful animated SVG without accessible name or hidden classification."
+    },
+    {
+      "id": "2m-claim-no-proof",
+      "path": "agent-os/53_benchmark_arena/cases/2m-claim-no-proof",
+      "expectedDomains": ["large-3d", "3d"],
+      "expectedFindings": ["large-3d-proof-debt"],
+      "description": "README claims 2M triangle support without runtime evidence."
+    },
+    {
+      "id": "invalid-export",
+      "path": "agent-os/53_benchmark_arena/cases/invalid-export",
+      "expectedDomains": ["export"],
+      "expectedFindings": ["output-validation-required"],
+      "description": "Export function downloads static or invalid output."
+    }
+  ]
+}
