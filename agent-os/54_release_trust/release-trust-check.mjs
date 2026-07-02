@@ -32,23 +32,39 @@ function readJson(file) {
 }
 
 const scorecard = readJson("SCORECARD.json");
-if (scorecard) {
+if (!scorecard) {
+  failures.push("Missing or invalid SCORECARD.json");
+} else {
   const score = scorecard.score ?? scorecard.finalScore ?? scorecard.total ?? scorecard.totalScore;
-  if (typeof score === "number" && score < 80) {
+  if (typeof score !== "number") {
+    failures.push("Scorecard is missing a numeric score property");
+  } else if (score < 80) {
     failures.push(`Release score below 80: ${score}`);
   }
 }
 
 const selfTest = readJson("SELF_TEST_REPORT.json");
-if (selfTest) {
+if (!selfTest) {
+  failures.push("Missing or invalid SELF_TEST_REPORT.json");
+} else {
   const failed = selfTest.failed ?? selfTest.summary?.failed ?? 0;
   if (failed > 0) failures.push(`Self-tests failed: ${failed}`);
 }
 
 const arena = readJson("BENCHMARK_ARENA_REPORT.json");
-if (arena) {
+if (!arena) {
+  failures.push("Missing or invalid BENCHMARK_ARENA_REPORT.json");
+} else {
   const failed = arena.failed ?? 0;
   if (failed > 0) failures.push(`Benchmark arena failures: ${failed}`);
+}
+
+const arenaV2 = readJson("BENCHMARK_ARENA_V2_REPORT.json");
+if (!arenaV2) {
+  failures.push("Missing or invalid BENCHMARK_ARENA_V2_REPORT.json");
+} else {
+  const failed = arenaV2.failed ?? 0;
+  if (failed > 0) failures.push(`Benchmark arena v2 failures: ${failed}`);
 }
 
 const result = {

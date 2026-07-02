@@ -74,7 +74,17 @@ rl.on("line", (line) => {
     return;
   }
 
-  const { id, method, params } = message;
+  const { jsonrpc, id, method, params } = message;
+
+  if (jsonrpc !== "2.0") {
+    error(id ?? null, -32600, "Invalid Request: missing jsonrpc version");
+    return;
+  }
+
+  if (!method) {
+    error(id ?? null, -32600, "Invalid Request: missing method name");
+    return;
+  }
 
   if (method === "initialize") {
     respond(id, {

@@ -36,15 +36,29 @@ server.stdout.on("data", (data) => {
           console.error("❌ Tool list failed validation.");
           process.exit(1);
         }
+        // Send unknown method request
+        const unknownCall = {
+          jsonrpc: "2.0",
+          id: 2,
+          method: "non_existent_method"
+        };
+        server.stdin.write(JSON.stringify(unknownCall) + "\n");
+      } else if (msg.id === 2) {
+        if (msg.error?.code === -32601) {
+          console.log("✅ Server successfully returned -32601 for unknown method.");
+        } else {
+          console.error("❌ Failed structured error code validation:", msg);
+          process.exit(1);
+        }
         // Send tool call request
         const toolCall = {
           jsonrpc: "2.0",
-          id: 2,
+          id: 3,
           method: "tools/call",
           params: { name: "agent_os.score" }
         };
         server.stdin.write(JSON.stringify(toolCall) + "\n");
-      } else if (msg.id === 2) {
+      } else if (msg.id === 3) {
         if (msg.result?.content) {
           console.log("✅ Tool call response wrapped in content array.");
           console.log("✅ Stdio transport smoke test passed successfully.");

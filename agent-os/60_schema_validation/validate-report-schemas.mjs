@@ -41,11 +41,26 @@ for (const schemaFile of schemaFiles) {
   const reportData = JSON.parse(fs.readFileSync(reportPath, "utf8"));
   const schema = JSON.parse(fs.readFileSync(schemaPath, "utf8"));
 
-  // Perform basic required fields validation
+  // Perform basic required fields and type validations
   const required = schema.required ?? [];
+  const properties = schema.properties ?? {};
+
   for (const field of required) {
     if (!(field in reportData)) {
       console.error(`❌ Report ${reportName} missing required schema field: ${field}`);
+      failures++;
+    }
+  }
+
+  for (const [key, val] of Object.entries(reportData)) {
+    const propSchema = properties[key];
+    if (!propSchema) continue;
+
+    const expectedType = propSchema.type;
+    const actualType = Array.isArray(val) ? "array" : typeof val;
+
+    if (expectedType && expectedType !== actualType) {
+      console.error(`❌ Report ${reportName} field "${key}" type mismatch: expected ${expectedType}, got ${actualType}`);
       failures++;
     }
   }
