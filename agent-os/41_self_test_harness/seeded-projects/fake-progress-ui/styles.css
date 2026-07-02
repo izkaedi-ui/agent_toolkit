@@ -1,0 +1,10 @@
+/* CSS animation for progress bar */
+@keyframes progress-stripes {
+  from { background-position: 40px 0; }
+  to { background-position: 0 0; }
+}
+
+.progress-bar {
+  animation: progress-stripes 1s linear infinite;
+  transition: width 0.1s ease;
+}
