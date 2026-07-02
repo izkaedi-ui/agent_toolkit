@@ -20,7 +20,9 @@
     "mutation:test": "node agent-os/57_mutation_tests/run-mutation-tests.mjs",
     "schema:validate": "node agent-os/60_schema_validation/validate-report-schemas.mjs",
     "mcp:smoke": "node agent-os/59_mcp_compliance/mcp-client-smoke-test.mjs",
-    "verify:all": "npm run typecheck && npm run build && npm run orchestrate && npm run orchestrate:super && npm run lint:protocols && npm run self-test && npm run score && npm run validate:reports && npm run benchmark:arena && npm run golden:verify && npm run mutation:test && npm run release:trust && npm run schema:validate && npm run mcp:smoke"
+    "benchmark:arena:v2": "node agent-os/62_benchmark_arena_v2/benchmark-arena-v2.mjs",
+    "viewer:generate": "node agent-os/65_report_viewer/generate-report-viewer.mjs",
+    "verify:all": "npm run typecheck && npm run build && npm run orchestrate && npm run orchestrate:super && npm run lint:protocols && npm run self-test && npm run score && npm run validate:reports && npm run benchmark:arena && npm run benchmark:arena:v2 && npm run golden:verify && npm run mutation:test && npm run release:trust && npm run schema:validate && npm run mcp:smoke && npm run viewer:generate"
   },
   "devDependencies": {
     "typescript": "^5.4.5"
