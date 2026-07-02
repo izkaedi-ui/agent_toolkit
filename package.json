@@ -22,7 +22,11 @@
     "mcp:smoke": "node agent-os/59_mcp_compliance/mcp-client-smoke-test.mjs",
     "benchmark:arena:v2": "node agent-os/62_benchmark_arena_v2/benchmark-arena-v2.mjs",
     "viewer:generate": "node agent-os/65_report_viewer/generate-report-viewer.mjs",
-    "verify:all": "npm run typecheck && npm run build && npm run orchestrate && npm run orchestrate:super && npm run lint:protocols && npm run self-test && npm run score && npm run validate:reports && npm run benchmark:arena && npm run benchmark:arena:v2 && npm run golden:verify && npm run mutation:test && npm run release:trust && npm run schema:validate && npm run mcp:smoke && npm run viewer:generate"
+    "package:check": "node agent-os/70_package_publishing/publishing-readiness-check.mjs",
+    "evidence:manifest": "node agent-os/72_version_evidence_manifest/generate-version-evidence.mjs",
+    "claim:diff": "node agent-os/73_claim_diff_engine/claim-diff.mjs",
+    "proof:debt": "node agent-os/75_proof_debt_tracker/proof-debt-tracker.mjs",
+    "verify:all": "npm run typecheck && npm run build && npm run orchestrate && npm run orchestrate:super && npm run lint:protocols && npm run self-test && npm run score && npm run validate:reports && npm run benchmark:arena && npm run benchmark:arena:v2 && npm run golden:verify && npm run mutation:test && npm run release:trust && npm run schema:validate && npm run mcp:smoke && npm run package:check && npm run claim:diff && npm run proof:debt && npm run evidence:manifest && npm run viewer:generate"
   },
   "devDependencies": {
     "typescript": "^5.4.5"
