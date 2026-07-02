@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Evidence Node",
+  "description": "Schema for a single node in the Agent OS evidence graph.",
+  "type": "object",
+  "required": ["id", "type", "claim", "status"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique node identifier"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["claim", "evidence", "proof", "finding", "gate"],
+      "description": "Node type"
+    },
+    "claim": {
+      "type": "string",
+      "description": "The claim being made"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["PROVEN", "UNPROVEN", "PARTIAL", "REFUTED"],
+      "description": "Evidence status"
+    },
+    "evidence": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "References to supporting evidence"
+    },
+    "source": {
+      "type": "string",
+      "description": "File or report where claim was detected"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this node was created"
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["targetId", "relationship"],
+        "properties": {
+          "targetId": { "type": "string" },
+          "relationship": {
+            "type": "string",
+            "enum": ["supports", "contradicts", "requires", "proves"]
+          }
+        }
+      }
+    }
+  }
+}

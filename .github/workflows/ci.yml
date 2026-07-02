@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build
+        run: npm run build
+
+      - name: Orchestrate
+        run: npm run orchestrate
+
+      - name: Orchestrate (supercharged)
+        run: npm run orchestrate:super
+
+      - name: Lint protocols
+        run: npm run lint:protocols
+
+      - name: Self-test
+        run: npm run self-test
+
+      - name: Score
+        run: npm run score
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: agent-os-reports
+          path: agent-os-reports/
+          if-no-files-found: warn
