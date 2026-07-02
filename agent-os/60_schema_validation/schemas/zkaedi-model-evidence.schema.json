@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ZKAEDI Model Evidence Report Schema",
+  "type": "object",
+  "required": ["status", "model", "doi", "verified", "claimBoundaries"],
+  "properties": {
+    "status": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "doi": {
+      "type": "string"
+    },
+    "verified": {
+      "type": "object",
+      "required": [
+        "modelRepositoryExists",
+        "doiPresent",
+        "gemma2TagPresent",
+        "ggufArtifactsPresent",
+        "adapterArtifactsPresent",
+        "auditScriptsPresent",
+        "benchmarkArtifactsPresent"
+      ],
+      "properties": {
+        "modelRepositoryExists": { "type": "boolean" },
+        "doiPresent": { "type": "boolean" },
+        "gemma2TagPresent": { "type": "boolean" },
+        "ggufArtifactsPresent": { "type": "boolean" },
+        "adapterArtifactsPresent": { "type": "boolean" },
+        "auditScriptsPresent": { "type": "boolean" },
+        "benchmarkArtifactsPresent": { "type": "boolean" }
+      }
+    },
+    "claimBoundaries": {
+      "type": "array"
+    }
+  }
+}

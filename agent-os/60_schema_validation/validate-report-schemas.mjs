@@ -28,6 +28,7 @@ for (const schemaFile of schemaFiles) {
   else if (schemaName === "trust-pack") reportName = "TRUST_PACK_VALIDATION.json";
   else if (schemaName === "mutation-test") reportName = "MUTATION_TEST_REPORT.json";
   else if (schemaName === "release-trust") reportName = "RELEASE_TRUST_REPORT.json";
+  else if (schemaName === "zkaedi-model-evidence") reportName = "ZKAEDI_MODEL_EVIDENCE_REPORT.json";
 
   const reportPath = path.join(REPORT_DIR, reportName);
   const schemaPath = path.join(SCHEMA_DIR, schemaFile);

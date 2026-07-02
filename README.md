@@ -29,7 +29,7 @@ Agent OS Toolkit provides:
 - **Benchmark Arena v2**: 12/12 passed
 - **Mutation checks**: 3/3 passed
 - **CI Build**: passing (GitHub Actions Run #9)
-- **Report/viewer artifacts**: 35
+- **Report/viewer artifacts**: 37
 
 ---
 
@@ -60,6 +60,7 @@ npm run verify:all
 | `npm run golden:verify` | Run golden shape report verification checks |
 | `npm run mutation:test` | Run mutation robustness linter check |
 | `npm run release:trust` | Run release trust checklist verifications |
+| `npm run zkaedi:evidence` | Run ZKAEDI Hugging Face model and DOI reference verifications |
 | `npm run schema:validate` | Run JSON schema validations over generated reports |
 | `npm run mcp:stdio` | Launch the stdio transport MCP server |
 | `npm run mcp:smoke` | Run the MCP stdio compliance smoke test client |
@@ -105,7 +106,15 @@ Example JSON-RPC request format:
 
 ---
 
-## Reports Generated (35 Artifacts)
+## ZKAEDI Model Evidence
+
+The ZKAEDI audit pipeline references the Hugging Face model `zkaedi/gemma-7b-solidity-energy-signatures`, which exists and lists DOI `10.57967/hf/7863`. The model repository includes Gemma-2-9B-related model artifacts, GGUF files, adapter files, tokenizer/config files, benchmark material, and audit scripts.
+
+This verifies the existence of the model artifact and DOI reference. It does not by itself prove security-audit efficacy; efficacy claims should be backed by reproducible benchmark results against known vulnerable and safe contracts.
+
+---
+
+## Reports Generated (37 Artifacts)
 
 All validation, diagnostic, and viewer reports are written to `agent-os-reports/`:
 
@@ -125,6 +134,7 @@ All validation, diagnostic, and viewer reports are written to `agent-os-reports/
 * **CLAIM_DIFF_REPORT.md / .json**: Documented claims mapped to implementations.
 * **PROOF_DEBT_REPORT.md / .json**: TODO/FIXME proof debt counts.
 * **RELEASE_ARTIFACT_MANIFEST.md / .json**: Release metadata summary linking tag to evidence.
+* **ZKAEDI_MODEL_EVIDENCE_REPORT.md / .json**: ZKAEDI Hugging Face model card & DOI reference verifications.
 * **VERSION_EVIDENCE_MANIFEST.md / .json**: SHA-256 hashes of verification output files.
 * **index.html**: Static diagnostics viewer dashboard.
 
