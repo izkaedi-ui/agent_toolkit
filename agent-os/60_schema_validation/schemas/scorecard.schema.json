@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ScorecardReport",
+  "type": "object",
+  "required": ["timestamp", "totalScore", "maxScore", "verdict"]
+}

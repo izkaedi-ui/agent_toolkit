@@ -18,7 +18,9 @@
     "docs:index": "node agent-os/55_docs_site/generate-docs-index.mjs",
     "golden:verify": "node agent-os/56_golden_reports/verify-golden-reports.mjs",
     "mutation:test": "node agent-os/57_mutation_tests/run-mutation-tests.mjs",
-    "verify:all": "npm run typecheck && npm run build && npm run orchestrate && npm run orchestrate:super && npm run lint:protocols && npm run self-test && npm run score && npm run validate:reports && npm run benchmark:arena && npm run golden:verify && npm run mutation:test && npm run release:trust"
+    "schema:validate": "node agent-os/60_schema_validation/validate-report-schemas.mjs",
+    "mcp:smoke": "node agent-os/59_mcp_compliance/mcp-client-smoke-test.mjs",
+    "verify:all": "npm run typecheck && npm run build && npm run orchestrate && npm run orchestrate:super && npm run lint:protocols && npm run self-test && npm run score && npm run validate:reports && npm run benchmark:arena && npm run golden:verify && npm run mutation:test && npm run release:trust && npm run schema:validate && npm run mcp:smoke"
   },
   "devDependencies": {
     "typescript": "^5.4.5"

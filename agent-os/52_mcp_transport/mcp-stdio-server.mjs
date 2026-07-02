@@ -76,6 +76,25 @@ rl.on("line", (line) => {
 
   const { id, method, params } = message;
 
+  if (method === "initialize") {
+    respond(id, {
+      protocolVersion: "2024-11-05",
+      capabilities: {
+        tools: {}
+      },
+      serverInfo: {
+        name: "agent-os-toolkit",
+        version: "0.1.0"
+      }
+    });
+    return;
+  }
+
+  if (method === "notifications/initialized") {
+    // Handshake completed successfully
+    return;
+  }
+
   if (method === "tools/list") {
     const manifestPath = path.join(ROOT, "agent-os/52_mcp_transport/mcp-tools.json");
     const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
@@ -92,7 +111,19 @@ rl.on("line", (line) => {
     }
 
     const result = runTool(name);
-    respond(id, result);
+    if (!result.ok) {
+      error(id, -32603, result.message ?? "Tool execution failed");
+      return;
+    }
+
+    respond(id, {
+      content: [
+        {
+          type: "text",
+          text: JSON.stringify(result)
+        }
+      ]
+    });
     return;
   }
 
