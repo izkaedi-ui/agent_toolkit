@@ -13,7 +13,12 @@
     "score": "node agent-os/48_agent_os_scorecard/score-agent-run.mjs",
     "validate:reports": "node agent-os/51_trust_pack/validate-agent-os-reports.mjs",
     "mcp:stdio": "node agent-os/52_mcp_transport/mcp-stdio-server.mjs",
-    "benchmark:arena": "node agent-os/53_benchmark_arena/run-benchmark-arena.mjs"
+    "benchmark:arena": "node agent-os/53_benchmark_arena/run-benchmark-arena.mjs",
+    "release:trust": "node agent-os/54_release_trust/release-trust-check.mjs",
+    "docs:index": "node agent-os/55_docs_site/generate-docs-index.mjs",
+    "golden:verify": "node agent-os/56_golden_reports/verify-golden-reports.mjs",
+    "mutation:test": "node agent-os/57_mutation_tests/run-mutation-tests.mjs",
+    "verify:all": "npm run typecheck && npm run build && npm run orchestrate && npm run orchestrate:super && npm run lint:protocols && npm run self-test && npm run score && npm run validate:reports && npm run benchmark:arena && npm run golden:verify && npm run mutation:test && npm run release:trust"
   },
   "devDependencies": {
     "typescript": "^5.4.5"
